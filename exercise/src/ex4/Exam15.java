@@ -3,8 +3,7 @@ package ex4;
 public class Exam15 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		long number = 1257157337517521l;
+		long number = 12321;
 		long tmp = number;
 		long result = 0; // number변수를거꾸로변환해서담을변수
 		while (tmp != 0) {

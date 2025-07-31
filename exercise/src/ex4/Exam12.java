@@ -8,7 +8,7 @@ public class Exam12 {
 		int tabs = 3;
 
 		for (int cell = 0; cell < maxDan / tabs; cell++) {
-			for (int i = 1; i <= 9; i++) {
+			for (int i = 1; i <= 3; i++) {
 				int start = minDan + cell * tabs;
 				int end = start + tabs;
 
