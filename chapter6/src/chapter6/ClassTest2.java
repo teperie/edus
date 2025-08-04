@@ -5,10 +5,10 @@ class Time {
 	int minute;
 	int second;
 }
-
-class Point {
-	int x, y;
-}
+//
+//class Point {
+//	int x, y;
+//}
 
 public class ClassTest2 {
 

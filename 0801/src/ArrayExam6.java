@@ -27,16 +27,16 @@ public class ArrayExam6 {
 //		}
 
 		for (int i = 0; i < rtot.length; i++) {
-			System.out.print(rtot[i] / src[0].length + " ");
+			System.out.print((double)rtot[i] / src[0].length + " ");
 		}
 		System.out.println();
 
 		for (int i = 0; i < ctot.length; i++) {
-			System.out.print(ctot[i] / src.length + " ");
+			System.out.print((double)ctot[i] / src.length + " ");
 		}
 		System.out.println();
 
-		System.out.println(atot / (ctot.length * rtot.length));
+		System.out.println((double)atot / (ctot.length * rtot.length));
 
 //		for (int i = 0; i < ctot.length; i++) {
 //			for (int j = 0; j < rtot.length; j++) {

@@ -1,0 +1,665 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Attach",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": "<debug port of the debuggee>"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ForTest",
+            "request": "launch",
+            "mainClass": "ForTest",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "ForTest2",
+            "request": "launch",
+            "mainClass": "ForTest2",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "ForTest3",
+            "request": "launch",
+            "mainClass": "ForTest3",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "ForTest4",
+            "request": "launch",
+            "mainClass": "ForTest4",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "IfTest1",
+            "request": "launch",
+            "mainClass": "IfTest1",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "Operator",
+            "request": "launch",
+            "mainClass": "Operator",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "Operator2",
+            "request": "launch",
+            "mainClass": "Operator2",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "Operator3",
+            "request": "launch",
+            "mainClass": "Operator3",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "Operator4",
+            "request": "launch",
+            "mainClass": "Operator4",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "SwitchTest",
+            "request": "launch",
+            "mainClass": "SwitchTest",
+            "projectName": "0729"
+        },
+        {
+            "type": "java",
+            "name": "CoffeeMachine",
+            "request": "launch",
+            "mainClass": "CoffeeMachine",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "DoWhileTest",
+            "request": "launch",
+            "mainClass": "DoWhileTest",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "ForTest10",
+            "request": "launch",
+            "mainClass": "ForTest10",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "ForTest11",
+            "request": "launch",
+            "mainClass": "ForTest11",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "ForTest12",
+            "request": "launch",
+            "mainClass": "ForTest12",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "ForTest5",
+            "request": "launch",
+            "mainClass": "ForTest5",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "ForTest9",
+            "request": "launch",
+            "mainClass": "ForTest9",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "RandomTest",
+            "request": "launch",
+            "mainClass": "RandomTest",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "WhileTest1",
+            "request": "launch",
+            "mainClass": "WhileTest1",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "WhileTest2",
+            "request": "launch",
+            "mainClass": "WhileTest2",
+            "projectName": "0730"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam",
+            "request": "launch",
+            "mainClass": "ArrayExam",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam2",
+            "request": "launch",
+            "mainClass": "ArrayExam2",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "ArrayTest",
+            "request": "launch",
+            "mainClass": "ArrayTest",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "ArrayTest2",
+            "request": "launch",
+            "mainClass": "ArrayTest2",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "BubbleSortEx",
+            "request": "launch",
+            "mainClass": "BubbleSortEx",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "CoffeeMachine(1)",
+            "request": "launch",
+            "mainClass": "CoffeeMachine",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "DarrayTest1",
+            "request": "launch",
+            "mainClass": "DarrayTest1",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "DarrayTest2",
+            "request": "launch",
+            "mainClass": "DarrayTest2",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "HexToBinaryExam",
+            "request": "launch",
+            "mainClass": "HexToBinaryExam",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "InsertionSortEx",
+            "request": "launch",
+            "mainClass": "InsertionSortEx",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "LottoExam",
+            "request": "launch",
+            "mainClass": "LottoExam",
+            "projectName": "0731"
+        },
+        {
+            "type": "java",
+            "name": "ArrayCopyTest1",
+            "request": "launch",
+            "mainClass": "ArrayCopyTest1",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam1",
+            "request": "launch",
+            "mainClass": "ArrayExam1",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam2(1)",
+            "request": "launch",
+            "mainClass": "ArrayExam2",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam3",
+            "request": "launch",
+            "mainClass": "ArrayExam3",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam4",
+            "request": "launch",
+            "mainClass": "ArrayExam4",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam5",
+            "request": "launch",
+            "mainClass": "ArrayExam5",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam6",
+            "request": "launch",
+            "mainClass": "ArrayExam6",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam7",
+            "request": "launch",
+            "mainClass": "ArrayExam7",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam8",
+            "request": "launch",
+            "mainClass": "ArrayExam8",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "ArrayExam9",
+            "request": "launch",
+            "mainClass": "ArrayExam9",
+            "projectName": "0801"
+        },
+        {
+            "type": "java",
+            "name": "Hello",
+            "request": "launch",
+            "mainClass": "Hello",
+            "projectName": "FirstProj"
+        },
+        {
+            "type": "java",
+            "name": "VariableTest",
+            "request": "launch",
+            "mainClass": "VariableTest",
+            "projectName": "FirstProj"
+        },
+        {
+            "type": "java",
+            "name": "ArrayParamTest",
+            "request": "launch",
+            "mainClass": "chapter6.ArrayParamTest",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "CharArrayTest",
+            "request": "launch",
+            "mainClass": "chapter6.CharArrayTest",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "ClassExam1",
+            "request": "launch",
+            "mainClass": "chapter6.ClassExam1",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "ClassTest1",
+            "request": "launch",
+            "mainClass": "chapter6.ClassTest1",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "ClassTest2",
+            "request": "launch",
+            "mainClass": "chapter6.ClassTest2",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "ClassTest3",
+            "request": "launch",
+            "mainClass": "chapter6.ClassTest3",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "OverloadTest1",
+            "request": "launch",
+            "mainClass": "chapter6.OverloadTest1",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "ParamTest1",
+            "request": "launch",
+            "mainClass": "chapter6.ParamTest1",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "RecursiveTest1",
+            "request": "launch",
+            "mainClass": "chapter6.RecursiveTest1",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "StaticMethodTest1",
+            "request": "launch",
+            "mainClass": "chapter6.StaticMethodTest1",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "StaticMethodTest2",
+            "request": "launch",
+            "mainClass": "chapter6.StaticMethodTest2",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "StaticTest1",
+            "request": "launch",
+            "mainClass": "chapter6.StaticTest1",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "StringParamTest",
+            "request": "launch",
+            "mainClass": "chapter6.StringParamTest",
+            "projectName": "chapter6"
+        },
+        {
+            "type": "java",
+            "name": "Exam1",
+            "request": "launch",
+            "mainClass": "ex3.Exam1",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam10",
+            "request": "launch",
+            "mainClass": "ex3.Exam10",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam2",
+            "request": "launch",
+            "mainClass": "ex3.Exam2",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam3",
+            "request": "launch",
+            "mainClass": "ex3.Exam3",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam4",
+            "request": "launch",
+            "mainClass": "ex3.Exam4",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam5",
+            "request": "launch",
+            "mainClass": "ex3.Exam5",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam6",
+            "request": "launch",
+            "mainClass": "ex3.Exam6",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam7",
+            "request": "launch",
+            "mainClass": "ex3.Exam7",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam8",
+            "request": "launch",
+            "mainClass": "ex3.Exam8",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam9",
+            "request": "launch",
+            "mainClass": "ex3.Exam9",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam1(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam1",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam10(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam10",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam11",
+            "request": "launch",
+            "mainClass": "ex4.Exam11",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam12",
+            "request": "launch",
+            "mainClass": "ex4.Exam12",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam13",
+            "request": "launch",
+            "mainClass": "ex4.Exam13",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam14",
+            "request": "launch",
+            "mainClass": "ex4.Exam14",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam15",
+            "request": "launch",
+            "mainClass": "ex4.Exam15",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam2(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam2",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam3(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam3",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam4(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam4",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam5(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam5",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam6(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam6",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam7(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam7",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam8(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam8",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam9(1)",
+            "request": "launch",
+            "mainClass": "ex4.Exam9",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam1(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam1",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam10(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam10",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam11(1)",
+            "request": "launch",
+            "mainClass": "ex5.Exam11",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam2(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam2",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam3(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam3",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam4(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam4",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam5(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam5",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam6(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam6",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam7(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam7",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam8(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam8",
+            "projectName": "exercise"
+        },
+        {
+            "type": "java",
+            "name": "Exam9(2)",
+            "request": "launch",
+            "mainClass": "ex5.Exam9",
+            "projectName": "exercise"
+        }
+    ]
+}
