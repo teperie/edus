@@ -3,9 +3,14 @@ package chapter6;
 import java.util.Scanner;
 
 public class Bank {
-	Scanner sc = new Scanner(System.in);
-	Account[] accs = new Account[100];
+	Scanner sc;
+	Account[] accs;
 	int cnt;
+
+	Bank() {
+		sc = new Scanner(System.in);
+		accs = new Account[100];
+	}
 
 	void makeAccount() {
 		// 1. 계좌번호, 이름, 입금액을 입력받아 변수에 담는다.
@@ -17,10 +22,7 @@ public class Bank {
 		int balance = Integer.parseInt(sc.nextLine());
 
 		// 2. account 객채를 생성하여 입력받은 값으로 속성을 초기화한다.
-		Account acc = new Account();
-		acc.id = id;
-		acc.name = name;
-		acc.balance = balance;
+		Account acc = new Account(id, name, balance);
 
 		// 3. 생성한 객채를 accs 배열에 담는다.
 		accs[cnt++] = acc;
@@ -112,17 +114,30 @@ public class Bank {
 	void transfer() {
 		System.out.println("[계좌송금]");
 		System.out.print("보내는계좌번호: ");
-		
-		System.out.println("보내는 계좌번호가 틀립니다.");
-		
+		String sid = sc.nextLine();
+
+		Account sac = searchAccById(sid);
+		if (sac == null) {
+			System.out.println("보내는 계좌번호가 틀립니다.");
+			return;
+		}
+
 		System.out.print("받는계좌번호: ");
-		
-		System.out.println("받는 계좌번호가 틀립니다. ");
+		String rid = sc.nextLine();
+
+		Account rac = searchAccById(sid);
+		if (rac == null) {
+			System.out.println("받는 계좌번호가 틀립니다.");
+			return;
+		}
 
 		System.out.print("송금액: ");
+		int amount = Integer.parseInt(sc.nextLine());
+		if (sac.withdraw(amount)) {
+			rac.deposit(amount);
+		}
+		;
 
-		System.out.println("잔액이 부족합니다. ");
-		
 	}
 
 	public static void main(String[] args) {
