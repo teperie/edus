@@ -1,22 +1,23 @@
-package chapter6;
+
 
 import java.util.Scanner;
+
+import acc.Account;
+import acc.SpecialAccount;
 
 public class Bank {
 	Scanner sc;
 	Account[] accs;
-	SpecialAccount[] saccs;
 	int cnt;
-	int scnt;
 
 	Bank() {
 		sc = new Scanner(System.in);
 		accs = new Account[100];
-		saccs = new SpecialAccount[100];
 	}
 
 	void makeAccount() {
 		// 1. 계좌번호, 이름, 입금액을 입력받아 변수에 담는다.
+		System.out.println("[일반계좌개설]");
 		System.out.print("계좌번호: ");
 		String id = sc.nextLine();
 		System.out.print("이름: ");
@@ -31,25 +32,23 @@ public class Bank {
 		accs[cnt++] = acc;
 	}
 
-	void makeAccount(String grade) {
+	void makeSpecialAccount() {
 		// 1. 계좌번호, 이름, 입금액을 입력받아 변수에 담는다.
+		System.out.println("[특별계좌개설]");
 		System.out.print("계좌번호: ");
 		String id = sc.nextLine();
 		System.out.print("이름: ");
 		String name = sc.nextLine();
 		System.out.print("입금액: ");
 		int balance = Integer.parseInt(sc.nextLine());
+		System.out.print("등급(VIP, Gold, Silver, Normal): ");
+		String grade = sc.nextLine();
 
 		// 2. account 객채를 생성하여 입력받은 값으로 속성을 초기화한다.
 		SpecialAccount acc = new SpecialAccount(id, name, balance, grade);
 
 		// 3. 생성한 객채를 accs 배열에 담는다.
-		saccs[scnt++] = acc;
-	}
-
-	void makeSpecialAccount() {
-		System.out.print("등급(VIP, Gold, Silver, Normal): ");
-		makeAccount(sc.nextLine());
+		accs[cnt++] = acc;
 	}
 
 	int menu() {
@@ -60,10 +59,22 @@ public class Bank {
 		System.out.println("4. 계좌조회");
 		System.out.println("5. 전채계좌조회");
 		System.out.println("6. 계좌송금");
-		System.out.println("7. 특별계좌만들기");
 		System.out.println("0. 종료");
 		System.out.print("선택>> ");
 		return Integer.parseInt(sc.nextLine());
+	}
+
+	void makeAccMenu() {
+		System.out.println("[계좌개설]");
+		System.out.println("1. 일반계좌");
+		System.out.println("2. 특별계좌");
+		System.out.print("선택>> ");
+		int sel = Integer.parseInt(sc.nextLine());
+		if (sel == 1) {
+			makeAccount();
+		} else if (sel == 2) {
+			makeSpecialAccount();
+		}
 	}
 
 	void deposit() {
@@ -81,7 +92,7 @@ public class Bank {
 		int amount = Integer.parseInt(sc.nextLine());
 
 		ac.deposit(amount);
-		System.out.println("잔액: " + ac.balance);
+		System.out.println("잔액: " + ac.getBalance());
 	}
 
 	void withdraw() {
@@ -99,13 +110,13 @@ public class Bank {
 		int amount = Integer.parseInt(sc.nextLine());
 
 		ac.withdraw(amount);
-		System.out.println("잔액: " + ac.balance);
+		System.out.println("잔액: " + ac.getBalance());
 	}
 
 	Account searchAccById(String id) {
 		Account ac = null;
 		for (int i = 0; i < cnt; i++) {
-			if (accs[i].id.equals(id)) {
+			if (accs[i].getId().equals(id)) {
 				ac = accs[i];
 				break;
 			}
@@ -175,7 +186,7 @@ public class Bank {
 			default:
 				break Loop;
 			case 1:
-				bank.makeAccount();
+				bank.makeAccMenu();
 				break;
 			case 2:
 				bank.deposit();

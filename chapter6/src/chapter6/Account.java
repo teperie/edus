@@ -1,6 +1,6 @@
 package chapter6;
 
-class Account {
+public class Account {
 	String id;
 	String name;
 	int balance;

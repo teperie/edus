@@ -1,10 +1,11 @@
+package emp;
 
 public class Employee {
-	String num;
-	String name;
-	int sal;
+	public String num;
+	public String name;
+	public int sal;
 
-	Employee() {
+	public Employee() {
 
 	}
 
@@ -14,7 +15,7 @@ public class Employee {
 		this.sal = sal;
 	}
 
-	String info() {
+	public String info() {
 		return String.format("사번: %s, 이름: %s, 급여: %d", num, name, sal);
 	}
 }

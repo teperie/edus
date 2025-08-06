@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "School",
+            "request": "launch",
+            "mainClass": "School",
+            "projectName": "SchoolProj"
+        },
+        {
+            "type": "java",
+            "name": "ShapeMain",
+            "request": "launch",
+            "mainClass": "ShapeMain",
+            "projectName": "ShapeProj"
+        },
+        {
+            "type": "java",
             "name": "Attach",
             "request": "attach",
             "hostName": "localhost",

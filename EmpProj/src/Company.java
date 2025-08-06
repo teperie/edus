@@ -1,3 +1,4 @@
+import emp.Employee;
 
 public class Company {
 	Employee[] employees = new Employee[100];
