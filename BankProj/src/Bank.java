@@ -203,9 +203,6 @@ public class Bank {
 			case 6:
 				bank.transfer();
 				break;
-			case 7:
-				bank.makeSpecialAccount();
-				break;
 			}
 		}
 	}

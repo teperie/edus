@@ -1,4 +1,7 @@
 import emp.Employee;
+import emp.PartTime;
+import emp.Permanent;
+import emp.Sales;
 
 public class Company {
 	Employee[] employees = new Employee[100];
@@ -6,10 +9,6 @@ public class Company {
 
 	void regEmployee(Employee employee) {
 		employees[count++] = employee;
-	}
-
-	void paySalary(String num, int pay) {
-		getEmployeeByNum(num).sal = pay;
 	}
 
 	Employee getEmployeeByNum(String num) {
@@ -25,43 +24,46 @@ public class Company {
 
 	String empInfo(String num) {
 		Employee employee = getEmployeeByNum(num);
-		return employee != null ? employee.info() : num + "번 사원은 없는 사원입니다.";
+		return employee != null ? employee.toString() : num + "번 사원은 없는 사원입니다.";
 	}
 
-	int getTotalEmpSal() {
+	int getAllTotalPay() {
 		int total = 0;
 		for (int i = 0; i < count; i++) {
-			total += employees[i].sal;
+			total += employees[i].getPay();
 		}
 		return total;
 	}
 
-	void allEmpInfo() {
+	void allEmployeeInfo() {
 		for (int i = 0; i < count; i++) {
-			System.out.println(employees[i].info());
+			System.out.println(employees[i].toString());
+		}
+	}
+
+	void getAllPartTime() {
+		for (int i = 0; i < count; i++) {
+			if (employees[i] instanceof PartTime) {
+				System.out.println(employees[i].toString());
+			}
 		}
 	}
 
 	public static void main(String[] args) {
 		Company com = new Company();
-		Employee emp1 = new Employee();
-		emp1.num = "1001";
-		emp1.name = "홍길동";
-		emp1.sal = 1000000;
+//		Employee emp1 = new Employee();
+		Employee emp1 = new Permanent("1001", "홍길동", 1000000);
+		Employee emp2 = new Sales("1002", "고길동", 800000, 500000);
+		Employee emp3 = new PartTime("1003", "박길동", 10000, 160);
 
 		com.regEmployee(emp1);
-		System.out.println(com.empInfo("1001"));
-		com.paySalary("1001", 1500000);
-		System.out.println(com.empInfo("1001"));
-
-		Employee emp2 = new Employee();
-		emp2.num = "1001";
-		emp2.name = "고길동";
-		emp2.sal = 2000000;
 		com.regEmployee(emp2);
+		com.regEmployee(emp3);
 
-		System.out.println("총 급여: " + com.getTotalEmpSal());
-		com.allEmpInfo();
+		com.allEmployeeInfo();
+		System.out.println("총 급여: " + com.getAllTotalPay());
+
+		com.getAllPartTime();
 	}
 
 }

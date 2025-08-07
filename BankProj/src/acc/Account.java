@@ -1,6 +1,5 @@
 package acc;
 
-
 public class Account {
 	private String id;
 	String name;
@@ -33,6 +32,10 @@ public class Account {
 		} else
 			System.out.println("잔액이 부족합니다.");
 		return result;
+	}
+
+	public void receive(int amount) {
+		setBalance(getBalance() + amount);
 	}
 
 	public int getBalance() {

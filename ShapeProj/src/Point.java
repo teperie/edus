@@ -12,8 +12,7 @@ public class Point {
 		this.y = y;
 	}
 
-	@Override
-	public String toString() {
+	public String draw() {
 		return "(" + x + "," + y + ")";
 	}
 }

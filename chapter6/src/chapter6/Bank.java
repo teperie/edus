@@ -60,7 +60,6 @@ public class Bank {
 		System.out.println("4. 계좌조회");
 		System.out.println("5. 전채계좌조회");
 		System.out.println("6. 계좌송금");
-		System.out.println("7. 특별계좌만들기");
 		System.out.println("0. 종료");
 		System.out.print("선택>> ");
 		return Integer.parseInt(sc.nextLine());
@@ -191,9 +190,6 @@ public class Bank {
 				break;
 			case 6:
 				bank.transfer();
-				break;
-			case 7:
-				bank.makeSpecialAccount();
 				break;
 			}
 		}

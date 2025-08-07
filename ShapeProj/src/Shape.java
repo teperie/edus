@@ -1,18 +1,15 @@
 
-public class Shape {
+public abstract class Shape {
 	String color;
 
 	public Shape() {
 		color = "White";
 	}
 
-	public void draw() {
-		System.out.println("[" + color + "]");
-	}
+	public abstract void draw();
 
 	public Shape(String color) {
 		this.color = color;
 	}
-
-	//
+	
 }

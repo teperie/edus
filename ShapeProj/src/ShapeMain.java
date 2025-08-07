@@ -6,17 +6,17 @@ public class ShapeMain {
 		Circle c2 = new Circle("Orange", new Point(10, 34), 23);
 		Circle c3 = new Circle();
 
-		System.out.println(c1.toString());
-		System.out.println(c2.toString());
-		System.out.println(c3.toString());
+		c1.draw();
+		c2.draw();
+		c3.draw();
 
 		Rectangle rect1 = new Rectangle("Blue", new Point(4, 5), 20, 10);
 		Rectangle rect2 = new Rectangle("Sky", 32, 12, 42, 25);
 		Rectangle rect3 = new Rectangle();
 
-		System.out.println(rect1.toString());
-		System.out.println(rect2.toString());
-		System.out.println(rect3.toString());
+		rect1.draw();
+		rect2.draw();
+		rect3.draw();
 
 		ShapeSet set = new ShapeSet();
 		set.addShape(c1);
@@ -29,6 +29,8 @@ public class ShapeMain {
 		set.addShape(new Triangle("Green", new Point(3, 4), new Point(5, 6), new Point(8, 5)));
 		set.addShape(new Triangle("Yellow", 6, 7, 8, 9, 1, 3));
 		set.addShape(new Triangle());
+
+		set.allShapeDraw();
 	}
 
 }

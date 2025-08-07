@@ -23,4 +23,10 @@ public class ShapeSet {
 			// Circle과 Rectangle은 Shape의 자식이므로 Shape 배열에 저장할 수 있다
 		}
 	}
+
+    public void allShapeDraw() {
+        for(int i = 0; i < cnt; i++) {
+            shapes[i].draw();
+        }
+    }
 }

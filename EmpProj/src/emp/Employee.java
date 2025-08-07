@@ -1,21 +1,39 @@
 package emp;
 
-public class Employee {
+public abstract class Employee {
 	public String num;
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String name;
-	public int sal;
+
+	public abstract int getPay();
 
 	public Employee() {
 
 	}
 
-	Employee(String num, String name, int sal) {
-		this.num = num;
-		this.name = name;
-		this.sal = sal;
+	Employee(String num, String name) {
+		setNum(num);
+		setName(name);
 	}
 
-	public String info() {
-		return String.format("사번: %s, 이름: %s, 급여: %d", num, name, sal);
+	@Override
+	public String toString() {
+		return String.format("사번: %s, 이름: %s, 급여: %d", num, name, getPay());
 	}
 }
