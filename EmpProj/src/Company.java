@@ -2,6 +2,7 @@ import emp.Employee;
 import emp.PartTime;
 import emp.Permanent;
 import emp.Sales;
+import emp.IBusinessTrip;
 
 public class Company {
 	Employee[] employees = new Employee[100];
@@ -49,21 +50,33 @@ public class Company {
 		}
 	}
 
+	public void regBusinessTrip(IBusinessTrip emp, int day) {
+		emp.goBusinessTrip(day);
+	}
+
 	public static void main(String[] args) {
 		Company com = new Company();
 //		Employee emp1 = new Employee();
-		Employee emp1 = new Permanent("1001", "홍길동", 1000000);
-		Employee emp2 = new Sales("1002", "고길동", 800000, 500000);
-		Employee emp3 = new PartTime("1003", "박길동", 10000, 160);
+		Permanent emp1 = new Permanent("1001", "홍길동", 1000000);
+		Sales emp2 = new Sales("1002", "고길동", 800000, 500000);
+		PartTime emp3 = new PartTime("1003", "박길동", 160, 10000);
+		PartTime emp4 = new PartTime("1004", "송길동", 160, 20000);
 
 		com.regEmployee(emp1);
 		com.regEmployee(emp2);
 		com.regEmployee(emp3);
+		com.regEmployee(emp4);
 
 		com.allEmployeeInfo();
-		System.out.println("총 급여: " + com.getAllTotalPay());
+		System.out.println("총 급여: " + com.getAllTotalPay());		
+		
+		com.regBusinessTrip(emp2, 3);
+		com.regBusinessTrip(emp3, 2);
+		com.regBusinessTrip(emp4, 3);
+		System.out.println("================================");
 
 		com.getAllPartTime();
+		com.allEmployeeInfo();
 	}
 
 }

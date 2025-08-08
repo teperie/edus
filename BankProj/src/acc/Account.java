@@ -1,5 +1,8 @@
 package acc;
 
+import exc.BankException;
+import exc.ERR_CODE;
+
 public class Account {
 	private String id;
 	String name;
@@ -24,13 +27,13 @@ public class Account {
 		setBalance(getBalance() + amount);
 	}
 
-	public boolean withdraw(int amount) {
+	public boolean withdraw(int amount) throws BankException {
 		boolean result = false;
 		if (getBalance() >= amount) {
 			setBalance(getBalance() - amount);
 			result = true;
 		} else
-			System.out.println("잔액이 부족합니다.");
+			throw new BankException(ERR_CODE.WITHDRAW);
 		return result;
 	}
 

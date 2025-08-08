@@ -21,20 +21,33 @@ class Button {
 public class InterfaceTest2 {
 
 	public static void main(String[] args) {
-		Button button = new Button();
+		Button loginButton = new Button();
 		
-		button.addClickEventListner(new Clickable() {
+		
+		loginButton.addClickEventListner(new Clickable() {
 
 			@Override
 			public void click() {
 				// TODO Auto-generated method stub
 				System.out.println("로그인 처리");
 			}
+
+		});
+
+		loginButton.onClick();
+		
+		Button joinBtn = new Button();
+		
+		joinBtn.addClickEventListner(new Clickable() {
+
+			@Override
+			public void click() {
+				System.out.println("회원가입 처리");
+			}
 			
 		});
 		
-		button.onClick();
-
+		joinBtn.onClick();
 	}
 
 }

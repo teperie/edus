@@ -1,6 +1,6 @@
 package emp;
 
-public class Sales extends Permanent {
+public class Sales extends Permanent implements IBusinessTrip {
 	int incentive;
 
 	public Sales(String num, String name, int salary, int incentive) {
@@ -24,8 +24,12 @@ public class Sales extends Permanent {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString();
+	}
+
+	@Override
+	public void goBusinessTrip(int day) {
+		incentive += day * 100000;
 	}
 
 }

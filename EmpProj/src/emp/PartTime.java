@@ -1,6 +1,6 @@
 package emp;
 
-public class PartTime extends Employee {
+public class PartTime extends Employee implements IBusinessTrip {
 	int time;
 	int payPerTime;
 
@@ -34,7 +34,11 @@ public class PartTime extends Employee {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString();
+	}
+
+	@Override
+	public void goBusinessTrip(int day) {
+		time += day * 24;
 	}
 }
