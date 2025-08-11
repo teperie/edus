@@ -22,11 +22,15 @@ public class Bank {
 		System.out.print("계좌번호: ");
 		String id = sc.nextLine();
 
+		Account ac = null;
+
 		try {
-			searchAccById(id);
+			ac = searchAccById(id);
 		} catch (BankException e) {
-			throw new BankException(ERR_CODE.DOUBLEID);
 		}
+
+		if (ac != null)
+			throw new BankException(ERR_CODE.DOUBLEID);
 
 		System.out.print("이름: ");
 		String name = sc.nextLine();
@@ -46,11 +50,15 @@ public class Bank {
 		System.out.print("계좌번호: ");
 		String id = sc.nextLine();
 
+		Account ac = null;
+
 		try {
-			searchAccById(id);
+			ac = searchAccById(id);
 		} catch (BankException e) {
-			throw new BankException(ERR_CODE.DOUBLEID);
 		}
+
+		if (ac != null)
+			throw new BankException(ERR_CODE.DOUBLEID);
 
 		System.out.print("이름: ");
 		String name = sc.nextLine();
@@ -118,7 +126,7 @@ public class Bank {
 			throw new BankException(ERR_CODE.DEPOSIT);
 		}
 
-		ac.deposit(amount);
+		ac.addBalance(amount);
 		System.out.println("잔액: " + ac.getBalance());
 	}
 
@@ -165,9 +173,7 @@ public class Bank {
 
 		Account ac = searchAccById(id);
 
-		if (ac == null)
-			throw new BankException(ERR_CODE.ACCID);
-
+		System.out.println(ac.info());
 	}
 
 	void allAccountInfo() {
@@ -191,7 +197,7 @@ public class Bank {
 		System.out.print("송금액: ");
 		int amount = Integer.parseInt(sc.nextLine());
 		if (sac.withdraw(amount)) {
-			rac.deposit(amount);
+			rac.addBalance(amount);
 		}
 
 	}

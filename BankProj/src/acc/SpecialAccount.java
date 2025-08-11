@@ -1,5 +1,7 @@
 package acc;
 
+import exc.BankException;
+
 public class SpecialAccount extends Account {
 	String grade;
 
@@ -36,6 +38,12 @@ public class SpecialAccount extends Account {
 		}
 		super.deposit(amount);
 
+	}
+	
+	@Override
+	public boolean withdraw(int amount) throws BankException{
+		return false;
+		
 	}
 
 	@Override

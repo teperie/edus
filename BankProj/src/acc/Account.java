@@ -8,6 +8,14 @@ public class Account {
 	String name;
 	private int balance;
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	Account() {
 
 	}
@@ -16,7 +24,7 @@ public class Account {
 		this.setId(id);
 		this.name = name;
 		// this.setBalance(balance);
-		deposit(balance);
+		setBalance(balance);
 	}
 
 	public String info() {
@@ -47,6 +55,10 @@ public class Account {
 
 	public void setBalance(int balance) {
 		this.balance = balance;
+	}
+
+	public void addBalance(int balance) {
+		setBalance(getBalance() + balance);
 	}
 
 	public String getId() {
