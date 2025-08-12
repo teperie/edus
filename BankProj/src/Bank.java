@@ -1,4 +1,8 @@
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 import acc.Account;
@@ -8,12 +12,11 @@ import exc.ERR_CODE;
 
 public class Bank {
 	Scanner sc;
-	Account[] accs;
-	int cnt;
+	HashMap<String, Account> accs;
 
 	Bank() {
 		sc = new Scanner(System.in);
-		accs = new Account[100];
+		accs = new HashMap<String, Account>();
 	}
 
 	void makeAccount() throws BankException {
@@ -41,7 +44,7 @@ public class Bank {
 		Account acc = new Account(id, name, balance);
 
 		// 3. 생성한 객채를 accs 배열에 담는다.
-		accs[cnt++] = acc;
+		accs.put(acc.getId(), acc);
 	}
 
 	void makeSpecialAccount() throws BankException {
@@ -71,7 +74,7 @@ public class Bank {
 		SpecialAccount acc = new SpecialAccount(id, name, balance, grade);
 
 		// 3. 생성한 객채를 accs 배열에 담는다.
-		accs[cnt++] = acc;
+		accs.put(acc.getId(), acc);
 	}
 
 	int menu() throws BankException {
@@ -155,12 +158,9 @@ public class Bank {
 
 	Account searchAccById(String id) throws BankException {
 		Account ac = null;
-		for (int i = 0; i < cnt; i++) {
-			if (accs[i].getId().equals(id)) {
-				ac = accs[i];
-				break;
-			}
-		}
+
+		ac = accs.get(id);
+
 		if (ac == null)
 			throw new BankException(ERR_CODE.ACCID);
 		return ac;
@@ -177,8 +177,26 @@ public class Bank {
 	}
 
 	void allAccountInfo() {
-		for (int i = 0; i < cnt; i++) {
-			System.out.println(accs[i].info());
+		System.out.println("[전체계좌조회]");
+		if (accs.size() == 0) {
+			System.out.println("개설된 계좌가 없습니다");
+			return;
+		}
+
+//		for (Account account : accs) {
+//			System.out.println(account.info());
+//		}
+
+//		Iterator<Account> it = accs.iterator();
+
+//		
+//		while (it.hasNext())
+//			System.out.println(it.next().info());
+
+//		ListIterator<Account> lit = accs.listIterator(accs.size());
+
+		for (Account acc : accs.values()) {
+			System.out.println(acc.info());
 		}
 	}
 

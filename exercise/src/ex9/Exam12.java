@@ -5,12 +5,7 @@ public class Exam12 {
 	 * (1) getRand메서드를 작성하시오.
 	 */
 	public static int getRand(int from, int to) {
-		int min = Math.min(from, to);
-		int max = Math.max(from, to);
-
-		double random = Math.random() * (max - min + 1);
-		random += min;
-		return Math.abs(random);
+		return Math.min(from, to) + (int) (Math.random() * (Math.abs(from - to) + 1));
 	}
 
 	public static void main(String[] args) {

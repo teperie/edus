@@ -18,10 +18,12 @@ class Point3D {
 		/*
 		 * (1) 인스턴스변수 x, y, z를 비교하도록 오버라이딩하시오.
 		 */
-		Point3D p3d = (Point3D) obj;
+		if (obj instanceof Point3D) {
+			Point3D p3d = (Point3D) obj;
 
-		return p3d.x == this.x && p3d.y == this.y && p3d.z == this.z;
-
+			return p3d.x == this.x && p3d.y == this.y && p3d.z == this.z;
+		} else
+			return false;
 	}
 
 	@Override

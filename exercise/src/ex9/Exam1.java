@@ -35,6 +35,7 @@ class SutdaCard {
 //		return isKwang;
 	}
 
+	@Override
 	public String toString() {
 		return num + (isKwang ? "K" : "");
 	}
