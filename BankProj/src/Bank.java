@@ -1,8 +1,10 @@
 
-import java.util.ArrayList;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.ListIterator;
 import java.util.Scanner;
 
 import acc.Account;
@@ -220,41 +222,68 @@ public class Bank {
 
 	}
 
-	public static void main(String[] args) {
-		Bank bank = new Bank();
-		int sel;
-
-		Loop: while (true) {
-
-			try {
-				sel = bank.menu();
-				switch (sel) {
-				case 0:
-				default:
-					break Loop;
-				case 1:
-					bank.makeAccMenu();
-					break;
-				case 2:
-					bank.deposit();
-					break;
-				case 3:
-					bank.withdraw();
-					break;
-				case 4:
-					bank.accountInfo();
-					break;
-				case 5:
-					bank.allAccountInfo();
-					break;
-				case 6:
-					bank.transfer();
-					break;
+	public void storeAccs_b() {
+		FileOutputStream fos = null;
+		DataOutputStream dos = null;
+		try {
+			fos = new FileOutputStream("accs.bin");
+			dos = new DataOutputStream(fos);
+			dos.writeInt(accs.size()); // 개설 계좌 수
+			for (Account acc : accs.values()) {
+				if (acc instanceof SpecialAccount) {
+					dos.writeChar('S'); // 일반계좌 구분자
+				} else {
+					dos.writeChar('N'); // 특수계좌 구분자
 				}
-			} catch (NumberFormatException e) {
-				System.out.println("입력 오류");
-			} catch (BankException e) {
-				System.out.println(e);
+				dos.writeUTF(acc.getId()); // 계좌번호
+				dos.writeUTF(acc.getName()); // 이름
+				dos.writeInt(acc.getBalance()); // 잔액
+
+				if (acc instanceof SpecialAccount) {
+					dos.writeUTF(((SpecialAccount) acc).getGrade()); // 특수계좌일 경우 등급
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (dos != null)
+					dos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void loadAccs_b() {
+		FileInputStream fis = null;
+		DataInputStream dis = null;
+		try {
+			fis = new FileInputStream("accs.bin");
+			dis = new DataInputStream(fis);
+			int cnt = dis.readInt();
+			for (int i = 0; i < cnt; i++) {
+				Account acc = null;
+				char sect = dis.readChar();
+				String id = dis.readUTF();
+				String name = dis.readUTF();
+				int balance = dis.readInt();
+				if (sect == 'S') {
+					String grade = dis.readUTF();
+					acc = new SpecialAccount(id, name, balance, grade);
+				} else {
+					acc = new Account(id, name, balance);
+				}
+				accs.put(id, acc);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (dis != null)
+					dis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
