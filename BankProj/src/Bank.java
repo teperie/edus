@@ -1,9 +1,16 @@
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -185,17 +192,17 @@ public class Bank {
 			return;
 		}
 
-//		for (Account account : accs) {
-//			System.out.println(account.info());
-//		}
+		// for (Account account : accs) {
+		// System.out.println(account.info());
+		// }
 
-//		Iterator<Account> it = accs.iterator();
+		// Iterator<Account> it = accs.iterator();
 
-//		
-//		while (it.hasNext())
-//			System.out.println(it.next().info());
+		//
+		// while (it.hasNext())
+		// System.out.println(it.next().info());
 
-//		ListIterator<Account> lit = accs.listIterator(accs.size());
+		// ListIterator<Account> lit = accs.listIterator(accs.size());
 
 		for (Account acc : accs.values()) {
 			System.out.println(acc.info());
@@ -255,6 +262,49 @@ public class Bank {
 		}
 	}
 
+	public void storeAccs_t() {
+		try (FileWriter fw = new FileWriter("accs.txt"); BufferedWriter bw = new BufferedWriter(fw)) {
+			for (Account acc : accs.values()) {
+				String accStr = acc.getId();
+				accStr += "#" + acc.getName();
+				accStr += "#" + acc.getBalance();
+				if (acc instanceof SpecialAccount) {
+					accStr += "#" + ((SpecialAccount) acc).getGrade();
+
+				}
+				bw.write(accStr);
+				bw.newLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void loadAccs_t() {
+		try (FileReader fr = new FileReader("accs.txt"); BufferedReader br = new BufferedReader(fr)) {
+
+			String data = null;
+			while ((data = br.readLine()) != null) {
+				String[] prop = data.split("#");
+				String id = prop[0];
+				String name = prop[1];
+				int balance = Integer.parseInt(prop[2]);
+
+				Account ac = null;
+
+				if (prop.length > 3) {
+					ac = new SpecialAccount(id, name, balance, prop[3]);
+				} else {
+					ac = new Account(id, name, balance);
+				}
+				accs.put(id, ac);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void loadAccs_b() {
 		FileInputStream fis = null;
 		DataInputStream dis = null;
@@ -285,6 +335,36 @@ public class Bank {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	public void storeAccs_o() {
+		try (FileInputStream fis = new FileInputStream("accs.ser");
+				ObjectInputStream ois = new ObjectInputStream(fis)) {
+			Account acc;
+			while ((acc = (Account) ois.readObject()) != null) {
+				accs.put(acc.getId(), acc);
+			}
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void loadAccs_o() {
+		try (FileInputStream fis = new FileInputStream("accs.ser");
+				ObjectInputStream ois = new ObjectInputStream(fis)) {
+
+			// System.out.println(ois.readObject());
+
+			Account acc = null;
+			while ((acc = (Account) ois.readObject()) != null) {
+				accs.put(acc.getId(), acc);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 }

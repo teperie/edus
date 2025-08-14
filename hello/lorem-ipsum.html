@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Unique Lorem Ipsum Generator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Unique Lorem Ipsum Generator</h1>
+    <label for="paragraphs">Number of paragraphs:</label>
+    <input type="number" id="paragraphs" value="5" min="1" max="200">
+    <button onclick="generateLorem()">Generate</button>
+    <button onclick="downloadLorem()">Download .txt</button>
+    <label for="fileName">File name:</label>
+    <input type="text" id="fileName" value="lorem-ipsum">
+    <textarea id="output" readonly></textarea> 
+
+    <script>
+        const words = [
+            "lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
+            "integer", "nec", "odio", "praesent", "libero", "sed", "cursus", "ante", "dapibus",
+            "diam", "nisi", "nulla", "quis", "sem", "at", "nibh", "elementum", "imperdiet", "duis",
+            "sagittis", "mauris", "fusce", "tellus", "augue", "semper", "porta", "massa", "vestibulum",
+            "lacinia", "arcu", "eget", "class", "aptent", "taciti", "sociosqu", "litora", "torquent",
+            "conubia", "nostra", "inceptos", "himenaeos", "curabitur", "sodales", "ligula", "dignissim",
+            "tortor", "pellentesque", "aenean", "quam", "scelerisque", "maecenas", "mattis", "convallis",
+            "tristique", "proin", "ut", "vel", "egestas", "porttitor", "morbi", "lectus", "risus", "iaculis",
+            "suscipit", "luctus", "turpis", "aliquet", "enim", "sapien", "varius", "eu", "bibendum", "magna",
+            "aliquam", "erat", "volutpat", "donec", "vulputate", "euismod", "orci", "efficitur", "metus",
+            "quisque", "interdum", "ex", "vehicula", "feugiat", "purus", "urna", "a", "cras", "et", "leo",
+            "pharetra", "vitae", "nam", "accumsan", "blandit", "dictum", "accumsan", "condimentum", "porttitor",
+            "placerat", "finibus", "habitasse", "platea", "dictumst", "felis", "aliquam", "pharetra", "vulputate",
+            "tincidunt", "sapien", "habitasse", "aptent", "leo", "turpis", "molestie", "sollicitudin", "tempor",
+            "consequat", "facilisis", "placerat", "maximus", "tempor", "justo", "luctus", "nunc", "dictum", "primis",
+            "pellentesque", "habitasse", "tincidunt", "class", "ligula", "auctor", "orci", "porta", "tincidunt",
+            "bibendum", "metus", "sollicitudin", "maecenas", "fringilla", "efficitur"
+        ];
+
+        function randomWord() {
+            return words[Math.floor(Math.random() * words.length)];
+        }
+
+        function randomSentence() {
+            const length = Math.floor(Math.random() * 10) + 8; // 8~18 words
+            let sentence = [];
+            for (let i = 0; i < length; i++) {
+                sentence.push(randomWord());
+            }
+            sentence[0] = sentence[0].charAt(0).toUpperCase() + sentence[0].slice(1);
+            return sentence.join(" ") + ".";
+        }
+
+        function randomParagraph(first = false) {
+            const sentences = Math.floor(Math.random() * 5) + 3; // 3~7 sentences
+            let paragraph = [];
+
+            if (first) {
+                // 첫 문장은 표준 Lorem Ipsum 시작 문장
+                paragraph.push("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+            }
+
+            for (let i = first ? 1 : 0; i < sentences; i++) {
+                paragraph.push(randomSentence());
+            }
+            return paragraph.join(" ");
+        }
+
+        let lastGenerated = "";
+
+        function generateLorem() {
+            const count = parseInt(document.getElementById("paragraphs").value, 10);
+            let result = "";
+            for (let i = 0; i < count; i++) {
+                result += randomParagraph(i === 0) + "\n\n"; // 첫 문단은 고정 문장
+            }
+            lastGenerated = result.trim();
+            document.getElementById("output").value = lastGenerated;
+        }
+
+        function downloadLorem() {
+            const fileName = document.getElementById("fileName").value;
+            if (!lastGenerated) {
+                alert("Please generate Lorem Ipsum first!");
+                return;
+            }
+            const blob = new Blob([lastGenerated], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = fileName + ".txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+
+</body>
+
+</html>

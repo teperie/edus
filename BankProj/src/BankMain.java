@@ -5,7 +5,9 @@ public class BankMain {
 		Bank bank = new Bank();
 		int sel;
 
-		bank.loadAccs_b();
+//		bank.loadAccs_b();
+//		bank.loadAccs_t();
+		bank.loadAccs_o();
 		
 		Loop: while (true) {
 
@@ -14,7 +16,9 @@ public class BankMain {
 				switch (sel) {
 				case 0:
 				default:
-					bank.storeAccs_b();
+//					bank.storeAccs_b();
+//					bank.storeAccs_t();
+					bank.storeAccs_o();
 					break Loop;
 				case 1:
 					bank.makeAccMenu();
