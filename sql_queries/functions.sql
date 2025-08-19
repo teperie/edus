@@ -59,6 +59,12 @@ SELECT LPAD('MariaDB', 20, '#');
 SELECT RPAD('MariaDB', 20, '$');
 SELECT LPAD(email, 20, '123456789') FROM professor;
 
+-- concat : 문자열을 이을 때 사용하는 함수
+-- smith(clerk)
+SELECT concat(ename, '(', job, ')') job FROM emp;
+
+-- smith's sal is $800
+SELECT CONCAT(ename, '''s sal is ', sal, '$') FROM emp;
 
 
 -- -------------------------------
@@ -162,6 +168,78 @@ SELECT studno, NAME, grade, birthday FROM student WHERE MONTH(birthday) = MONTH(
 -- -------------------------------
 -- 숫자 함수
 -- -------------------------------
+-- count : 조건에 만족하는 레코드(행)의 수
+SELECT COUNT(*) FROM emp;
+SELECT COUNT(*) FROM emp WHERE deptno=10;
 
+SELECT COUNT(empno) FROM emp;
+SELECT COUNT(comm) FROM emp; -- 선택한 컬럼이 null인 행은 제외
 
+-- sum
+SELECT SUM(sal) FROM emp;
+SELECT SUM(sal) FROM emp WHERE deptno=10;
 
+-- avg
+SELECT format(AVG(sal),2) FROM emp;
+SELECT FORMAT(AVG(sal),2) FROM emp WHERE deptno = 10;
+
+-- emp 테이블에서 전채 직원 수, 전체 직원의 급여합, 평균 조회
+SELECT COUNT(*), SUM(sal), SUM(sal)/COUNT(*), AVG(sal) FROM emp;
+
+-- emp 테이블에서 전체 직원의 커미션의 합, 커미션의 평균 조회
+SELECT SUM(comm), SUM(comm)/COUNT(*), AVG(comm), AVG(IFNULL(comm,0)) FROM emp;
+
+-- emp 테이블에서 이름, 급여, 급여+상여금 조회
+SELECT eNAME, sal, sal + ifnull(comm,0) FROM emp;
+
+-- min, max
+-- emp 테이블에서 사원 중에서 급여와 보너스를 합친 금액이 가장 많은 경우와 가장 적은 경우, 평균 금액을 조회
+SELECT max(sal + ifnull(comm,0)), MIN(sal+ifnull(comm,0)), AVG(sal+IFNULL(comm,0)) FROM emp;
+
+-- group by
+SELECT deptno, ename, COUNT(*), SUM(sal) 
+FROM emp
+GROUP BY deptno;
+
+-- student 테이블에서 제1학과별 학과번호, 학생 수 조회
+SELECT deptno1, COUNT(*) FROM student GROUP BY deptno1;
+
+-- professor 테이블에서 직급별 급여 평균 조회
+SELECT POSITION, AVG(pay) FROM professor GROUP BY POSITION;
+
+-- emp2 테이블에서 고용타입별 인원수
+SELECT emp_type, COUNT(*) FROM emp2 GROUP BY emp_type;
+
+SELECT POSITION, COUNT(*)
+FROM emp2
+GROUP BY POSITION;
+
+-- 그룹핑한 것에 대한 조건은 having절을 사용
+-- professor 테이블에서 학과별 급여 평균이 400 이상인 학과의 인원 수 급여 평균 조회
+SELECT deptno, AVG(pay) 
+FROM professor
+GROUP BY deptno
+HAVING AVG(pay) >= 400;
+
+-- deptno가 101인 학생들의 학년별 평균 키를 구하디 평균 키가 180 이상인 학년만 조회
+SELECT deptno1, grade, AVG(height)
+FROM student
+WHERE deptno1 = 101
+GROUP BY grade
+HAVING AVG(height) >= 180
+ORDER BY AVG(height);
+
+-- gogak 테이블에서 출생연도별 포인트 평균 조회
+SELECT SUBSTR(jumin, 1, 2), avg(POINT) 
+FROM gogak
+GROUP BY SUBSTR(jumin,1,2);
+
+-- student 테이블에서 각 학과(제1학과)와 학년별 평균 몸무게, 최대/최소 몸무게 조회
+SELECT deptno1, grade, AVG(weight), MAX(weight), MIN(weight)
+FROM student
+GROUP BY deptno1, grade;
+
+-- emp 테이블에서 부서와 직군별 인원 수 조회
+SELECT deptno, job, COUNT(*)
+FROM emp
+GROUP BY deptno, job;
