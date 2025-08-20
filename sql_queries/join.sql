@@ -170,31 +170,105 @@ from student s
 where
     s.profno is null;
 
-select p.name
-from professor p
-where
-    p.profno not in(
-        select profno
-        from student
-    );
-
 -- 학점이 a인 학생의 학번, 이름, 학년, 학과명 조회
-select s.studno, s.name, s.grade, d1.dname d1, d2.dname d2, e.total, h.grade
-from
+SELECT s.studno, s.name, s.grade, d1.dname d1, d2.dname d2, e.total, h.grade
+FROM
     student s
-    left join exam_01 e using (studno)
-    left join hakjum h on (
+    LEFT JOIN exam_01 e USING (studno)
+    LEFT JOIN hakjum h ON (
         e.total BETWEEN h.min_point AND h.max_point
     )
-    left join department d1 on (s.deptno1 = d1.deptno)
-    left join department d2 on (s.deptno2 = d2.deptno)
-where
-    h.grade like 'A_';
+    LEFT JOIN department d1 ON (s.deptno1 = d1.deptno)
+    LEFT JOIN department d2 ON (s.deptno2 = d2.deptno)
+WHERE
+    h.grade LIKE 'A_';
 
 -- 학년별 평균 점수
-explain
-select s.grade, format(avg(e.total), 0) AS avg
-from student s
-    left join exam_01 e using(studno)
-group by
+SELECT s.grade, FORMAT(AVG(e.total), 0) AS avg
+FROM student s
+    LEFT JOIN exam_01 e USING (studno)
+GROUP BY
     s.grade;
+
+-- dept2 : 각 부서번호, 부서이름, 상위부서번호, 상위부서명 조회
+SELECT d1.dcode, d1.dname, d1.pdept, d2.dname
+FROM dept2 d1
+    JOIN dept2 d2 ON (d1.pdept = d2.dcode);
+
+-- professor, department : 교수의 교수번호, 이름, 학과명 조회
+SELECT p.profno, p.name, d.dname
+FROM professor p
+    JOIN department d ON (p.deptno = d.deptno);
+
+-- 컴퓨터정보학부에 속하는 학과 목록 조회
+SELECT d1.deptno, d1.dname
+FROM department d1
+JOIN department d2 
+ON (d1.part = d2.deptno)
+WHERE d2.dname = '컴퓨터정보학부';
+
+-- 컴퓨터정보학부에 속하는 교수 목록 조회
+SELECT p.profno, p.name, d1.deptno, d1.dname
+FROM professor p
+JOIN department d1
+USING(deptno)
+JOIN department d2 
+ON (d1.part = d2.deptno)
+WHERE d2.dname = '컴퓨터정보학부';
+
+-- 공과대학에 속하는 학과 목록 조회
+SELECT d1.deptno, d1.dname
+FROM department d1
+JOIN department d2 
+ON (d1.part = d2.deptno)
+JOIN department d3
+ON (d2.part = d3.deptno)
+WHERE d3.dname = '공과대학';
+
+-- 공과대학에 속하는 학생 목록 조회
+SELECT s.studno, s.name, d1.deptno, d1.dname
+FROM student s
+JOIN department d1
+ON s.deptno1 = d1.deptno
+JOIN department d2 
+ON (d1.part = d2.deptno)
+JOIN department d3
+ON (d2.part = d3.deptno)
+WHERE d3.dname = '공과대학';
+
+-- '노트북'을 받을 수 있는 포인트를 소유한 고객의 번호, 이름, 포인트 조회
+SELECT gog.gno, gog.gname, gog.point
+FROM gogak gog
+JOIN gift gi ON (gog.point >= gi.g_start)
+WHERE gi.gname = '노트북';
+
+-- 교수들이 담당하는 학생 수 조회
+SELECT p.profno, p.name, COUNT(*) AS cnt
+FROM professor p
+JOIN student s ON (p.profno = s.profno)
+GROUP BY p.profno;
+
+-- emp2, dept2 : 영업부에 속하는 직원의 사번, 이름, 부서번호, 부서명 조회
+SELECT e.empno, e.name, e.deptno, d.dname
+FROM emp2 e
+JOIN dept2 d
+on(e.deptno = d.dcode)
+join dept2 d2
+on(d.pdept = d2.dcode)
+join dept2 d3
+ON(d2.pdept = d3.dcode)
+WHERE d3.dname = '영업부';
+
+-- emp : blake가 관리하는 사원의 사번, 이름, 업무 조회
+SELECT e.empno, e.ename, e.job
+FROM emp e
+JOIN emp m
+ON(e.mgr = m.empno)
+WHERE m.ename = 'blake';
+
+-- emp2 : '인턴직'이나 '수습직' 사원을 관리하고 있는 직원의 사번, 이름, 직급 조회
+SELECT DISTINCT m.EMPNO, m.name, m.position
+FROM emp2 e
+JOIN emp2 m
+ON e.PEMPNO = m.EMPNO
+WHERE e.EMP_TYPE='인턴직' OR e.emp_type='수습직'
