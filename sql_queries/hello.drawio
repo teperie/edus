@@ -1,0 +1,148 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0" version="28.1.0">
+  <diagram name="펫 보호소 포털 UC 완전 최적화" id="0">
+    <mxGraphModel dx="258711" dy="129368" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Guest" value="방문자(게스트)" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-7290" y="-6600" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="User" value="회원" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-7290" y="-6500" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Adopter" value="입양희망자" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-7290" y="-6400" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Donor" value="후원자" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-7290" y="-6300" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Volunteer" value="봉사자" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-7290" y="-6200" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Shelter" value="보호소 담당자" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-7290" y="-6100" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Admin" value="관리자" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-7290" y="-6000" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Map" value="지도/주소" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-6610" y="-6600" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PG" value="결제(PG)" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-6610" y="-6520" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KYC" value="본인인증" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-6610" y="-6440" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Notify" value="메일/SMS" style="shape=actor;verticalLabelPosition=bottom;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="-6610" y="-6360" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_SearchShelter" value="보호소 목록/검색" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-7110" y="-6600" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_BrowseAnimals" value="동물 목록/검색/필터" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-7110" y="-6520" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_ViewAnimal" value="동물 프로필 보기" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-7110" y="-6440" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_ViewShelter" value="보호소 상세 보기" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-7110" y="-6360" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Adopt" value="입양 신청" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-6600" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Donate" value="후원하기" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-6520" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Volunteer" value="봉사 신청" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-6440" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Wishlist" value="위시리스트 물품 기부" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-6360" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_TrackStatus" value="신청 진행상태 확인" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-6280" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Receipt" value="기부 영수증/내역 조회" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-6200" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_ShelterProfile" value="보호소 등록/프로필 관리" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-6120" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_AnimalCRUD" value="동물 등록/수정/상태 변경" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-6040" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_ReviewApps" value="입양/봉사 신청 검토·승인/반려" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-5960" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Transparency" value="후원 집계/사용내역 공개" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-5880" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_WishlistManage" value="필요물품 위시리스트 관리" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-5800" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_VolScheduler" value="봉사 일정 관리/출석" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6910" y="-5720" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_VerifyShelter" value="보호소 인증/승인" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6710" y="-6120" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Taxonomy" value="카테고리/태그/정책 관리" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6710" y="-6040" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Moderation" value="신고/모더레이션" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6710" y="-5960" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Analytics" value="통계/로그 모니터링" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6710" y="-5880" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Payment" value="결제 처리" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6760" y="-6520" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_KYC" value="본인 인증" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6760" y="-6440" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Notify" value="알림 발송" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6760" y="-6360" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UC_Map" value="지도/경로 제공" style="shape=ellipse;" parent="1" vertex="1">
+          <mxGeometry x="-6760" y="-6600" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Guest" target="UC_SearchShelter" edge="1" />
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Guest" target="UC_BrowseAnimals" edge="1" />
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Guest" target="UC_ViewAnimal" edge="1" />
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Guest" target="UC_ViewShelter" edge="1" />
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="User" target="UC_Adopt" edge="1" />
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="User" target="UC_Donate" edge="1" />
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="User" target="UC_Volunteer" edge="1" />
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="User" target="UC_Wishlist" edge="1" />
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="User" target="UC_TrackStatus" edge="1" />
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="User" target="UC_Receipt" edge="1" />
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Adopter" target="UC_Adopt" edge="1" />
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Donor" target="UC_Donate" edge="1" />
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Volunteer" target="UC_Volunteer" edge="1" />
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Shelter" target="UC_ShelterProfile" edge="1" />
+        <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Shelter" target="UC_AnimalCRUD" edge="1" />
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Shelter" target="UC_ReviewApps" edge="1" />
+        <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Shelter" target="UC_Transparency" edge="1" />
+        <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Shelter" target="UC_WishlistManage" edge="1" />
+        <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Shelter" target="UC_VolScheduler" edge="1" />
+        <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Admin" target="UC_VerifyShelter" edge="1" />
+        <mxCell id="e21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Admin" target="UC_Taxonomy" edge="1" />
+        <mxCell id="e22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Admin" target="UC_Moderation" edge="1" />
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="Admin" target="UC_Analytics" edge="1" />
+        <mxCell id="e24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;" parent="1" source="UC_Donate" target="UC_Payment" edge="1" />
+        <mxCell id="e25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;" parent="1" source="UC_Adopt" target="UC_KYC" edge="1" />
+        <mxCell id="e26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;" parent="1" source="UC_Volunteer" target="UC_KYC" edge="1" />
+        <mxCell id="e27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;" parent="1" source="UC_Adopt" target="UC_Notify" edge="1" />
+        <mxCell id="e28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;dashed=1;" parent="1" source="UC_ReviewApps" target="UC_Notify" edge="1" />
+        <mxCell id="e29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="UC_Payment" target="PG" edge="1" />
+        <mxCell id="e30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="UC_KYC" target="KYC" edge="1" />
+        <mxCell id="e31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="UC_Notify" target="Notify" edge="1" />
+        <mxCell id="e32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="UC_ViewShelter" target="UC_Map" edge="1" />
+        <mxCell id="e33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=classic;" parent="1" source="UC_ViewShelter" target="Map" edge="1" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
