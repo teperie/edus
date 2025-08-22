@@ -90,7 +90,7 @@ public class ArticleDao extends DBConnection {
 	}
 
 	public static List<Article> selectList() {
-		List<Article> userList = new ArrayList<>();
+		List<Article> articleList = new ArrayList<>();
 		Connection conn = getConnection();
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -99,10 +99,11 @@ public class ArticleDao extends DBConnection {
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(sql);
 			while (rset.next()) {
+				int num = rset.getInt("num");
 				String title = rset.getString("title");
 				String content = rset.getString("content");
 				String writer = rset.getString("writer");
-				userList.add(new Article(title, content, writer));
+				articleList.add(new Article(num, title, content, writer));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,6 +112,6 @@ public class ArticleDao extends DBConnection {
 			close(stmt);
 			close(conn);
 		}
-		return userList;
+		return articleList;
 	}
 }

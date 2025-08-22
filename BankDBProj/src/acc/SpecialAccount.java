@@ -42,8 +42,7 @@ public class SpecialAccount extends Account {
 	
 	@Override
 	public boolean withdraw(int amount) throws BankException{
-		return false;
-		
+		return super.withdraw(amount);
 	}
 
 	@Override

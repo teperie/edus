@@ -2,12 +2,13 @@ package acc;
 
 import java.io.Serializable;
 
+import dao.AccountDao;
 import exc.BankException;
 import exc.ERR_CODE;
 
 public class Account implements Serializable {
 	private String id;
-	String name;
+	private String name;
 	private int balance;
 
 	public String getName() {
@@ -35,12 +36,14 @@ public class Account implements Serializable {
 
 	public void deposit(int amount) {
 		setBalance(getBalance() + amount);
+		AccountDao.update(this);
 	}
 
 	public boolean withdraw(int amount) throws BankException {
 		boolean result = false;
 		if (getBalance() >= amount) {
 			setBalance(getBalance() - amount);
+			AccountDao.update(this);
 			result = true;
 		} else
 			throw new BankException(ERR_CODE.WITHDRAW);
@@ -49,6 +52,7 @@ public class Account implements Serializable {
 
 	public void receive(int amount) {
 		setBalance(getBalance() + amount);
+		AccountDao.update(this);
 	}
 
 	public int getBalance() {
@@ -61,6 +65,7 @@ public class Account implements Serializable {
 
 	public void addBalance(int balance) {
 		setBalance(getBalance() + balance);
+		AccountDao.update(this);
 	}
 
 	public String getId() {
@@ -69,6 +74,11 @@ public class Account implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return this.info();
 	}
 
 }

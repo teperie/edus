@@ -1,6 +1,14 @@
 package dto;
 
 public class Article {
+	public Article(int num, String title, String content, String writer) {
+		super();
+		this.num = num;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+	}
+
 	int num;
 	public int getNum() {
 		return num;
@@ -51,7 +59,7 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [title=" + title + ", content=" + content + ", writer=" + writer + "]";
+		return "Article [num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer + "]";
 	}
 
 }

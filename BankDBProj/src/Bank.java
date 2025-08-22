@@ -1,23 +1,12 @@
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import acc.Account;
 import acc.SpecialAccount;
 import exc.BankException;
 import exc.ERR_CODE;
+import dao.AccountDao;
 
 public class Bank {
 	Scanner sc;
@@ -34,10 +23,7 @@ public class Bank {
 
 		Account ac = null;
 
-		try {
-			ac = searchAccById(id);
-		} catch (BankException e) {
-		}
+		ac = AccountDao.select(id);
 
 		if (ac != null)
 			throw new BankException(ERR_CODE.DOUBLEID);
@@ -51,6 +37,7 @@ public class Bank {
 		Account acc = new Account(id, name, balance);
 
 		// 3. 생성한 객채를 accs 배열에 담는다.
+		AccountDao.insert(acc);
 	}
 
 	void makeSpecialAccount() throws BankException {
@@ -80,6 +67,7 @@ public class Bank {
 		SpecialAccount acc = new SpecialAccount(id, name, balance, grade);
 
 		// 3. 생성한 객채를 accs 배열에 담는다.
+		AccountDao.insert(acc);
 	}
 
 	int menu() throws BankException {
@@ -90,13 +78,14 @@ public class Bank {
 		System.out.println("4. 계좌조회");
 		System.out.println("5. 전채계좌조회");
 		System.out.println("6. 계좌송금");
+		System.out.println("7. 계좌삭제");
 		System.out.println("0. 종료");
 		System.out.print("선택>> ");
 
 		int input = 999;
 		input = Integer.parseInt(sc.nextLine());
 
-		if (input < 0 || input > 6) {
+		if (input < 0 || input > 7) {
 			throw new BankException("메뉴오류", ERR_CODE.MENU);
 		}
 
@@ -117,12 +106,19 @@ public class Bank {
 		}
 	}
 
+	void delete() throws BankException {
+		System.out.println("[계좌삭제]");
+		System.out.print("계좌번호: ");
+		String id = sc.nextLine();
+		AccountDao.delete(id);
+	}
+
 	void deposit() throws BankException {
 		System.out.println("[입금]");
 		System.out.print("계좌번호: ");
 		String id = sc.nextLine();
 
-		Account ac = searchAccById(id);
+		Account ac = AccountDao.select(id);
 
 		System.out.print("입금액: ");
 
@@ -143,7 +139,7 @@ public class Bank {
 		System.out.print("계좌번호: ");
 		String id = sc.nextLine();
 
-		Account ac = searchAccById(id);
+		Account ac = AccountDao.select(id);
 		if (ac == null) {
 			System.out.println("그런거 없어요");
 			return;
@@ -164,6 +160,7 @@ public class Bank {
 	Account searchAccById(String id) throws BankException {
 		Account ac = null;
 
+		ac = AccountDao.select(id);
 
 		if (ac == null)
 			throw new BankException(ERR_CODE.ACCID);
@@ -175,15 +172,25 @@ public class Bank {
 		System.out.print("계좌번호: ");
 		String id = sc.nextLine();
 
-		Account ac = searchAccById(id);
+		Account ac = AccountDao.select(id);
+		if (ac == null) {
+			throw new BankException(ERR_CODE.ACCID);
+		}
 
 		System.out.println(ac.info());
 	}
 
 	void allAccountInfo() {
 		System.out.println("[전체계좌조회]");
+		List<Account> list = AccountDao.selectList();
+		if (list.size() == 0) {
 			System.out.println("개설된 계좌가 없습니다");
 			return;
+		}
+
+		for (Account ac : list) {
+			System.out.println(ac);
+		}
 
 		// for (Account account : accs) {
 		// System.out.println(account.info());
@@ -204,17 +211,17 @@ public class Bank {
 		System.out.print("보내는계좌번호: ");
 		String sid = sc.nextLine();
 
-		Account sac = searchAccById(sid);
+		Account sac = AccountDao.select(sid);
 
 		System.out.print("받는계좌번호: ");
 		String rid = sc.nextLine();
 
-		Account rac = searchAccById(rid);
+		Account rac = AccountDao.select(rid);
 
 		System.out.print("송금액: ");
 		int amount = Integer.parseInt(sc.nextLine());
 		if (sac.withdraw(amount)) {
-			rac.addBalance(amount);
+			rac.receive(amount);
 		}
 
 	}
