@@ -22,6 +22,8 @@
     <h1>Unique Lorem Ipsum Generator</h1>
     <label for="paragraphs">Number of paragraphs:</label>
     <input type="number" id="paragraphs" value="5" min="1" max="200">
+    <label for="firstParagraph">Lorem standard first:</label>
+    <input checked type="checkbox" id="firstParagraph">
     <button onclick="generateLorem()">Generate</button>
     <button onclick="downloadLorem()">Download .txt</button>
     <label for="fileName">File name:</label>
@@ -83,8 +85,9 @@
         function generateLorem() {
             const count = parseInt(document.getElementById("paragraphs").value, 10);
             let result = "";
+            const isFirstParagraph = document.getElementById("firstParagraph").checked;
             for (let i = 0; i < count; i++) {
-                result += randomParagraph(i === 0) + "\n\n"; // 첫 문단은 고정 문장
+                result += randomParagraph(i === 0 && isFirstParagraph) + "\n\n"; // 첫 문단은 고정 문장
             }
             lastGenerated = result.trim();
             document.getElementById("output").value = lastGenerated;

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: lightgray;
+        padding: 5px;
+      }
+
+      a {
+        color: black;
+      }
+
+      .font-gray {
+        color: gray;
+        text-decoration: underline gray solid;
+      }
+
+      .font-orange {
+        color: orange;
+        text-decoration: underline orange solid;
+      }
+
+      .top .title {
+        color: white;
+        background-color: orange;
+        font-size: 50px;
+        text-align: center;
+        padding: 0 0 15px 0;
+      }
+
+      .top .title h1 {
+        margin-block: 0;
+        margin-inline: 0;
+      }
+
+      .top .title p {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .top .title.description {
+        background-color: darkgray;
+        padding: 5px;
+      }
+
+      .top .title.description > p {
+        text-align: center;
+        color: black;
+        font-size: 15px;
+      }
+
+      aside.left {
+        background-color: white;
+        width: 200px;
+        float: left;
+      }
+
+      aside.right {
+        background-color: white;
+        width: 200px;
+        float: right;
+      }
+
+      .middle {
+        display: flex;
+      }
+
+      .left h1 {
+        color: white;
+        background-color: darkred;
+        font-size: 15px;
+        padding: 5px 10px;
+      }
+
+      .left li {
+        padding: 10px 5px;
+        font-size: 13px;
+      }
+
+      .right {
+        padding: 10px;
+      }
+
+      .right ul {
+        list-style: none;
+      }
+
+      .right ul h2,
+      .right ul p {
+        font-size: 12px;
+      }
+
+      .right li {
+        margin: 15px 0;
+      }
+
+      section.content {
+        margin: 0;
+        padding: 0 10px;
+      }
+
+      section ul {
+        list-style: none;
+      }
+
+      section h1 {
+        font-size: 20px;
+        color: lightgray;
+        background-color: #123456;
+        padding: 5px;
+      }
+
+      section h2 {
+        font-size: 15px;
+        margin: 15px 0;
+      }
+
+      section p {
+        font-size: 12px;
+      }
+
+      section li {
+        margin: 10px 0;
+      }
+
+      footer {
+        padding: 10px;
+        background-color: #123456;
+        color: white;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      footer a {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="title">
+        <h1>Musée d'Orsay</h1>
+        <p>
+          Musée d'Orsay Musée d'Orsay Musée d'Orsay Musée d'Orsay Musée d'Orsay
+        </p>
+      </div>
+      <div class="title description">
+        <p>
+          Royal Academy of Arts. THE REAL VANGOGH THE ARTIST AND HIS LETTERS
+        </p>
+      </div>
+    </header>
+    <div class="middle">
+      <aside class="left">
+        <h1>ARTIST</h1>
+        <ul>
+          <li><a href="#">작가의 작품</a></li>
+          <li><a href="#">작가의 시대</a></li>
+          <li><a href="#">작가의 일생</a></li>
+        </ul>
+      </aside>
+      <section class="content">
+        <ul>
+          <li>
+            <h1>피리부는 소년</h1>
+            <div>
+              <h2>에두아르마네</h2>
+              <p>
+                1866 캔버스에 유채, 161*97cm, 파리 오르세 Edouard MANET, Le
+                Fifre, H.T, 161*97cm
+              </p>
+            </div>
+          </li>
+          <li>
+            <h1>고흐의 방</h1>
+            <div>
+              <h2>빈센트반고흐</h2>
+              <p>
+                1889 캔버스에 유채, 57.5*74cm, 파리 오르세 Vincent Van GOGH, La
+                Chambre de Van Gogh, H/T, 57.5*74cm
+              </p>
+            </div>
+          </li>
+          <li>
+            <h1>황색 그리스도가 있는 화가의 자화상</h1>
+            <div>
+              <h2>폴 고갱</h2>
+              <p>
+                1890-1891 캔버스에 유채,38*46cm,파리 오르세 Paul Gauguin
+                Portrait de I'artiste au Paum Gauguin, H/T, 38*46cm
+              </p>
+            </div>
+          </li>
+          <li>
+            <h1>오페라좌의 관현악단</h1>
+            <div>
+              <h2>에드가 드가</h2>
+              <p>
+                1868-1869 캔버스에 유채,32*46cm,파리 오르세 Edgar
+                Degas,L'orchestre de I'Opera H/T, 38*46cm
+              </p>
+            </div>
+          </li>
+          <li>
+            <h1>만종</h1>
+            <div>
+              <h2>장 프랑수아 밀레</h2>
+              <p>
+                1857-1859 캔버스에 유채, 55.5*66cm, 파리 오르세 Jean-Franqois
+                Millet, L'Angelus H/T 55.5*66cm
+              </p>
+            </div>
+          </li>
+          <li>
+            <h1>제비꽃장식을 단 베르트모리조</h1>
+            <div>
+              <h2>에두아르마네</h2>
+              <p>
+                1872 Edouard Manet Berthe Morisot au bouquet de H/T, 55.38cm
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <aside class="right">
+        <h1>
+          <span class="font-gray">전세계인들에게 </span
+          ><span class="font-orange">제일 사랑받는 </span>서양미술사의 시대
+        </h1>
+        <ul>
+          <li>
+            <h2><a href="#">Workshop Go</a></h2>
+            <p>Life drowing workshop</p>
+          </li>
+          <li>
+            <h2><a href="#">Summer exhibition</a></h2>
+            <p>A-level Summer Exbition Online 2010</p>
+          </li>
+          <li>
+            <h2><a href="#">RA collection</a></h2>
+            <p>RA collection</p>
+          </li>
+        </ul>
+      </aside>
+    </div>
+    <footer class="bottom">
+      <p>
+        &copy; 2012 Les Amis du Musée d'Orsay. All rights reserved.
+        <a href="mailto:amis@amis-musee-orsay.org">amis@amis-musee-orsay.org</a>
+        Legal status
+      </p>
+    </footer>
+  </body>
+</html>
