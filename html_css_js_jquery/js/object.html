@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let user = {
+        name: 'John',
+        age: 30,
+        "likes birds": true
+      };
+
+      user.isAdmin = true;
+      console.log(typeof user);
+      console.log(user.name);
+      console.log(user.age);
+      console.log(user.isAdmin);
+
+      delete user.isAdmin;
+
+      let key = "likes birds";
+      console.log(user[key]);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let fruit = prompt("어떤 과일을 구매하시겠습니까?");
+
+      let cart = {
+        [fruit]: 5,
+      };
+
+      console.log(cart);
+
+      let user = {
+        name: "hong",
+        age: 30,
+        info: function () {
+          console.log(`이름: ${this.name}, 나이: ${this.age}`);
+        },
+      };
+
+      let { name, age, info } = user;
+      user.info();
+      info();
+
+      console.log("name" in user);
+      console.log("gender" in user);
+      console.log("toString" in user);
+
+      let person = {
+        name: "hong",
+        age: 20,
+        isMarried: true,
+      };
+
+      for (let key in person) {
+        console.log(person[key]);
+      }
+      
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let userName = "hong";
+      function showMessage(from, text = "반갑다") {
+        // let userName = "asdf"
+        // console.log(`안녕 ${userName}`);
+        console.log(`${from}: ${text}`);
+        // return a + b;
+      }
+
+      showMessage("kong", "잘 지내냐?");
+      showMessage("kong");
+
+      let add = function (x, y) {
+        return x + y;
+      };
+
+      let res = add(10, 20);
+      console.log(res);
+
+      const sum = function(x,y) {
+        return x+y;
+      }
+
+      let res2 = sum(10,20);
+      console.log(res2);
+    </script>
+  </head>
+  <body></body>
+</html>

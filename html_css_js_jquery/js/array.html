@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let arr = [3, 5, 2, 1, 7, 8];
+
+      function bubble(arr, compare) {
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length - i - 1; j++) {
+            if (compare(arr[j], arr[j + 1])) {
+              let temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+      }
+
+      var descCompare = function(a,b) {
+        return a>b;
+      }
+      var ascCompare = function(a,b) {
+        return a<b;
+      }
+      bubble(arr, descCompare);
+      console.log(arr);
+
+      bubble(arr, ascCompare);
+      console.log(arr);
+    </script>
+  </head>
+  <body></body>
+</html>

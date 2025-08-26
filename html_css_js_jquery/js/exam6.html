@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function func(name, age, address) {
+            return {name, age, address};
+        }
+
+        let {name, age, address} = func('hong', 20, 'seoul');
+        console.log(name);
+        console.log(age);
+        console.log(address);
+
+        let user = {
+            name: 'hong',
+            age:20
+        }
+
+        console.log(typeof user)
+        console.log(user)
+
+        let juser = JSON.stringify(user);
+
+        console.log(typeof juser)
+        console.log(juser)
+
+        let ouser = JSON.parse(juser);
+
+        console.log(typeof ouser)
+        console.log(ouser)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
