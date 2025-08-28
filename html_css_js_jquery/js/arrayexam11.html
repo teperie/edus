@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function unique(arr) {
+        let res = [];
+
+        for (let i = 0; i < arr.length; i++) {
+          if (!res.includes(arr[i])) {
+            res.push(arr[i]);
+          }
+        }
+        return res;
+      }
+
+      let strings = [
+        "hare",
+        "krishna",
+        "hare",
+        "krishna",
+        "hare",
+        "hare",
+        "krishna",
+      ];
+      console.log(unique(strings)); // hare,krishna,:-0
+    </script>
+  </head>
+  <body></body>
+</html>

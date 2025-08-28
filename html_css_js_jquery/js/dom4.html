@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let elems = document.querySelectorAll("h1");
+
+        for (const e of elems) {
+          e.style.backgroundColor = "red";
+          e.style.color = "orange";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="h1">Process - 1</h1>
+    <h2>Process - 2</h2>
+  </body>
+</html>

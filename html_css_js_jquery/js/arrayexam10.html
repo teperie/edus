@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let john = {
+            name: "John",
+            age: 25
+        };
+        let pete = {
+            name: "Pete",
+            age: 30
+        };
+        let mary = {
+            name: "Mary",
+            age: 28
+        };
+
+        let users = [john, pete, mary];
+
+        const getAverageAge = function(arr) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i].age;
+            }
+            return sum / arr.length;
+        }
+
+        let ageAvg = getAverageAge(users);
+        console.log(ageAvg);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
