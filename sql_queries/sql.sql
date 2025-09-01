@@ -24,4 +24,4 @@ CREATE TABLE persons(
     first_name varchar(255),
     address varchar(255),
     city VARCHAR(255)
-);mydb
+);
