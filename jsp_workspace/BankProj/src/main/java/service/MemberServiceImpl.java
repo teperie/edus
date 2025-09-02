@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import dao.MemberDao;
 import dto.Member;
 
@@ -22,6 +24,19 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<Member> allMemberInfo() throws Exception {
 		return MemberDao.selectList();
+	}
+
+	@Override
+	public Member matchIdPw(String id, String password) throws Exception {
+		Member mem = MemberDao.select(id);
+		if(mem==null) throw new Exception("아이디가 없어요");
+		if(!mem.getPassword().equals(password)) throw new Exception("비밀번호가 틀렸어요");
+		return mem;
+	}
+
+	@Override
+	public void logout(HttpSession session) {
+		session.removeAttribute("loginInfo");
 	}
 
 }

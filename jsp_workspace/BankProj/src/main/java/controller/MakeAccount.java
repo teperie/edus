@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.Account;
-import dto.SpecialAccount;
 import service.AccountService;
 import service.AccountServiceImpl;
 
@@ -50,11 +49,7 @@ public class MakeAccount extends HttpServlet {
 		Account acc = null;
 		RequestDispatcher dispatcher = null;
 		try {
-			if (type.equals("special")) {
-				acc = new SpecialAccount(id, name, balance, grade);
-			} else {
-				acc = new Account(id, name, balance);
-			}
+			acc = new Account(id, name, balance, grade);
 			
 			AccountService service = new AccountServiceImpl();
 			service.makeAccount(acc);

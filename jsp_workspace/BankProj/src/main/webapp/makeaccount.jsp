@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,40 +80,46 @@ input[type='submit'] {
 			<h3>계좌개설</h3>
 		</div>
 		<div class="container">
+            <c:if test="${not empty errorMsg}">
+                <div style="color:red; text-align:center;">${errorMsg}</div>
+            </c:if>
 			<div class="row">
 				<div class="title">계좌번호</div>
 				<div class="input">
-					<input type="text" name="id" id="id">
+					<input type="text" name="id" id="id" value="${param.id}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="title">이름</div>
 				<div class="input">
-					<input type="text" name="name" id="name">
+					<input type="text" name="name" id="name" value="${param.name}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="title">입금액</div>
 				<div class="input">
-					<input type="text" name="balance" id="balance">
+					<input type="text" name="balance" id="balance" value="${param.balance}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="title">종류</div>
 				<div class="input">
-					<input type="radio" name="type" checked value="normal">일반 <input
-						type="radio" name="type" value="special">특수
+					<input type="radio" name="type" value="normal" id="typeNormal"
+                        <c:if test="${param.type == 'normal' || empty param.type}">checked</c:if>>일반
+                    <input type="radio" name="type" value="special" id="typeSpecial"
+                        <c:if test="${param.type == 'special'}">checked</c:if>>특수
 				</div>
 			</div>
 			<div class="row">
 				<div class="title">등급</div>
 				<div class="input">
-					<select name="grade" id="grade" disabled>
-						<option>선택</option>
-						<option value="VIP">VIP</option>
-						<option value="Gold">Gold</option>
-						<option value="Silver">Silver</option>
-						<option value="Normal">Normal</option>
+					<select name="grade" id="grade"
+                            <c:if test="${param.type != 'special'}">disabled</c:if>>
+						<option value="">선택</option>
+						<option value="VIP" <c:if test="${param.grade == 'VIP'}">selected</c:if>>VIP</option>
+						<option value="Gold" <c:if test="${param.grade == 'Gold'}">selected</c:if>>Gold</option>
+						<option value="Silver" <c:if test="${param.grade == 'Silver'}">selected</c:if>>Silver</option>
+						<option value="Normal" <c:if test="${param.grade == 'Normal'}">selected</c:if>>Normal</option>
 					</select>
 				</div>
 			</div>

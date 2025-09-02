@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="dto.Account" %>    
 <%@ page import="dto.SpecialAccount" %>    
-<%
-	Account acc = (Account)request.getAttribute("acc");
-%>    
+<!-- acc 객체는 request에 이미 있음 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,34 +40,37 @@
         <div class="container">
             <div class="row">
                 <div class="title">계좌번호</div>
-                <div class="input"><input type="text" disabled value=<%=acc.getId() %>></div>
+                <div class="input"><input type="text" disabled value="${acc.id}"></div>
             </div>
             <div class="row">
                 <div class="title">이름</div>
-                <div class="input"><input type="text" disabled value=<%=acc.getName() %>></div>
+                <div class="input"><input type="text" disabled value="${acc.name}"></div>
             </div>
             <div class="row">
                 <div class="title">잔액</div>
-                <div class="input"><input type="text" disabled value=<%=acc.getBalance() %>></div>
+                <div class="input"><input type="text" disabled value="${acc.balance}"></div>
             </div>
             <div class="row">
                 <div class="title">종류</div>
                 <div class="input">
-                	<%if(acc instanceof SpecialAccount) { %>
-                		<input type="text" disabled value="특수계좌">
-                	<%} else { %>
-                		<input type="text" disabled value="일반계좌">
-                	<%} %>
+                    <c:choose>
+                        <c:when test="${isSpecial}">
+                            <input type="text" disabled value="특수계좌">
+                        </c:when>
+                        <c:otherwise>
+                            <input type="text" disabled value="일반계좌">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
-            <%if(acc instanceof SpecialAccount) { %>
+            <c:if test="${isSpecial}">
             <div class="row">
                 <div class="title">등급</div>
                 <div class="input">
-                	<input type="text" disabled value=<%=((SpecialAccount)acc).getGrade() %>>
+                    <input type="text" disabled value="${grade}">
                 </div>
             </div>
-            <%} %>
+            </c:if>
         </div>
 </body>
 </html>

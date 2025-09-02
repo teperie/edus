@@ -58,7 +58,7 @@ public class Join extends HttpServlet {
 			if (isDuplicate) {
 				Member mem = service.searchById(id);
 				if (mem != null) {
-					request.setAttribute("msg", "이미 존재하는 아이디입니다.");
+					request.setAttribute("isDuplicated", true);
 					request.setAttribute("id", id);
 					request.setAttribute("name", name);
 					request.setAttribute("email", email);
@@ -66,7 +66,7 @@ public class Join extends HttpServlet {
 					request.getRequestDispatcher("join.jsp").forward(request, response);
 					return;
 				} else {
-					request.setAttribute("msg", "사용 가능한 아이디입니다.");
+					request.setAttribute("isDuplicated", false);
 					request.getRequestDispatcher("join.jsp").forward(request, response);
 					return;
 				}

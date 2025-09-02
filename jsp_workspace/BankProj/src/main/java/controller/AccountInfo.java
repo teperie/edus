@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.Account;
-import dto.SpecialAccount;
 import service.AccountServiceImpl;
 
 /**
@@ -52,6 +51,12 @@ public class AccountInfo extends HttpServlet {
 		try {
 			Account acc = service.searchById(id);
 			request.setAttribute("acc", acc);
+			if (acc.getGrade() != null && !acc.getGrade().isEmpty()) {
+				request.setAttribute("isSpecial", true);
+				request.setAttribute("grade", acc.getGrade());
+			} else {
+				request.setAttribute("isSpecial", false);
+			}
 			rd = request.getRequestDispatcher("accountinfo.jsp");
 		} catch (Exception e) {
 			System.err.println(e);

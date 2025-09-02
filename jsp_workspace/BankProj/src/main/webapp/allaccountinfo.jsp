@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.List"%>
-<%@ page import="dto.Account"%>
-<%@ page import="dto.SpecialAccount"%>
-<%
-List<Account> accs = (List<Account>) request.getAttribute("accs");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +41,7 @@ List<Account> accs = (List<Account>) request.getAttribute("accs");
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+	<jsp:include page="header.jsp" />
 	<form action="">
 		<div class="header">
 			<h3>전체계좌조회</h3>
@@ -60,27 +55,23 @@ List<Account> accs = (List<Account>) request.getAttribute("accs");
 				<div class="title column">종류</div>
 				<div class="title column">등급</div>
 			</div>
-			<%for (int i = 0; i < accs.size(); i++) {
-			Account acc = accs.get(i);%>
-			<div class="row">
-				<div class="column"><%=i + 1%></div>
-				<div class="column"><%=acc.getId()%></div>
-				<div class="column"><%=acc.getName()%></div>
-				<div class="column"><%=acc.getBalance()%></div>
-				<div class="column">
-					<%if (acc instanceof SpecialAccount) {%>
-						특수게좌
-					<%} else {%>
-						일반계좌
-					<%}%>
+			<c:forEach var="acc" items="${accs}" varStatus="status">
+				<div class="row">
+					<div class="column">${status.index + 1}</div>
+					<div class="column">${acc.id}</div>
+					<div class="column">${acc.name}</div>
+					<div class="column">${acc.balance}</div>
+					<div class="column">
+						<c:choose>
+							<c:when test="${not empty acc.grade}">특수계좌</c:when>
+							<c:otherwise>일반계좌</c:otherwise>
+						</c:choose>
+					</div>
+					<div class="column">
+						<c:if test="${not empty acc.grade}">${acc.grade}</c:if>
+					</div>
 				</div>
-				<div class="column">
-					<%if (acc instanceof SpecialAccount) {%>
-						<%=((SpecialAccount) acc).getGrade()%>
-					<%}%>
-				</div>
-			</div>
-			<%}%>
+			</c:forEach>
 		</div>
 	</form>
 </body>

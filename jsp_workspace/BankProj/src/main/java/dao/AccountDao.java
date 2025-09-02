@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.Account;
-import dto.SpecialAccount;
 
 public class AccountDao extends DBConnection {
 	public static void insert(Account acc) {
@@ -22,8 +21,8 @@ public class AccountDao extends DBConnection {
 			pstmt.setString(2, acc.getName());
 			pstmt.setInt(3, acc.getBalance());
 			
-			if(acc instanceof SpecialAccount) {
-				pstmt.setString(4, ((SpecialAccount)acc).getGrade());
+			if(acc.getGrade() != null && !acc.getGrade().isEmpty()) {
+				pstmt.setString(4, acc.getGrade());
 			} else {
 				pstmt.setString(4, null);
 			}
@@ -72,7 +71,7 @@ public class AccountDao extends DBConnection {
 				if(grade==null) {
 					acc=new Account(rid,name,balance);
 				} else {
-					acc=new SpecialAccount(id,name,balance,grade);
+					acc=new Account(rid,name,balance,grade);
 				}
 			}
 		} catch(SQLException e) {
@@ -103,7 +102,7 @@ public class AccountDao extends DBConnection {
 					if(grade==null) {
 						accList.add(new Account(id,name,balance));
 					} else {
-						accList.add(new SpecialAccount(id,name,balance,grade));
+						accList.add(new Account(id,name,balance,grade));
 					}
 				}
 			}
@@ -117,12 +116,3 @@ public class AccountDao extends DBConnection {
 		return accList;
 	}
 }
-
-
-
-
-
-
-
-
-

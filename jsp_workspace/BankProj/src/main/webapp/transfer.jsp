@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,17 +43,20 @@
     <form action="transfer" method="post">
         <div class="header"><h3>계좌송금</h3></div>
         <div class="container">
+            <c:if test="${not empty errorMsg}">
+                <div style="color:red; text-align:center;">${errorMsg}</div>
+            </c:if>
             <div class="row">
                 <div class="title">보내는계좌번호</div>
-                <div class="input"><input name="sid" type="text"></div>
+                <div class="input"><input name="sid" type="text" value="${param.sid}"></div>
             </div>
             <div class="row">
                 <div class="title">받는계좌번호</div>
-                <div class="input"><input name="rid" type="text"></div>
+                <div class="input"><input name="rid" type="text" value="${param.rid}"></div>
             </div>
             <div class="row">
                 <div class="title">송금액</div>
-                <div class="input"><input name="money" type="text"></div>
+                <div class="input"><input name="money" type="text" value="${param.money}"></div>
             </div>
             <div class="button">
                 <input type="submit" value="송금">

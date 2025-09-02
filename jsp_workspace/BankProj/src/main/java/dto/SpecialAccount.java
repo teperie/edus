@@ -4,7 +4,12 @@ import java.io.Serializable;
 
 import exc.BankException;
 
+// This file is deprecated and will be removed. All logic is now in Account.java.
 public class SpecialAccount extends Account implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String grade;
 	
 	public SpecialAccount(String id, String name, int balance, String grade) {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,10 +50,13 @@ input[type='submit'] {
 			<h3>계좌조회</h3>
 		</div>
 		<div class="container">
+            <c:if test="${not empty errorMsg}">
+                <div style="color:red; text-align:center;">${errorMsg}</div>
+            </c:if>
 			<div class="row">
 				<div class="title">계좌번호</div>
 				<div class="input">
-					<input name="id" type="text">
+					<input name="id" type="text" value="${param.id}">
 				</div>
 			</div>
 			<div class="button">
