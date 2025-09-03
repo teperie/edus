@@ -1,0 +1,69 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import dto.Article;
+import service.ArticleService;
+import service.ArticleServiceImpl;
+
+/**
+ * Servlet implementation class BoardWrite
+ */
+@WebServlet("/boardWrite")
+public class BoardWrite extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BoardWrite() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("writeform.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String path = request.getServletContext().getRealPath("upload");
+		int size = 10*1024*1024;
+		MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+		
+		String writer = multi.getParameter("writer");
+		String title = multi.getParameter("subject");
+		String content = multi.getParameter("content");
+		String filename = multi.getFilesystemName("dfile");
+		String imgfilename = multi.getFilesystemName("ifile");
+		
+		Article article = new Article(writer,title,content,filename,imgfilename);
+		
+		ArticleService service = new ArticleServiceImpl();
+		try {
+			service.write(article);
+			System.out.println(article);
+			request.setAttribute("article", article);
+			service.write(article);
+			request.getRequestDispatcher("boarddetail.jsp").forward(request, response);
+		} catch(Exception e) {
+			e.printStackTrace();
+			request.setAttribute("err", "게시글 작성시 오류가 발생했습니다.");
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+		}
+	}
+}

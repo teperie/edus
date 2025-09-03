@@ -1,0 +1,21 @@
+Design a modern, minimal homepage.  
+Constraints:  
+- Use only the following hex colors, 투명도 설정은 가능:  
+  #F9F9F9, #000000, #F1DEC9, #777777, #8D7B68, #A4907C, #666666, #FFF8EA, #3C2A21, #FFFFFF 
+- Do not generate or introduce any other colors.  
+- Apply the palette consistently for background, typography, buttons, and UI components.  
+- Keep the layout clean, balanced, and visually cohesive.  
+- All example texts, placeholders, and layout elements must directly relate to an integrated community for animal shelters.  
+
+우리 홈페이지는 동물 보호소 통합 커뮤니티임. 동물 보호소가 보호 일상을 사진이나 영상을 첨부해 게시해서 유저들에게 후원 입양 봉사활동을 유도하는게 목적임. 단, 강아지만 취급함.
+
+html과 css만 한 파일로 묶고, 스크립트는 없어야 함.
+
+헤더와 푸터는 이미 만들어 둔 공통 컴포넌트를 사용하므로 필요없음.
+
+페이지 영역의 가로 최대 너비는 1200px
+
+코드에 대한 설명 필요없음. 그냥 코드만 주면 됨.
+
+만들 화면: 보호소 프로필 페이지
+보호소에 관한 자세한 정보를 볼 수 있는 화면. 해당 보호소가 보호중인 동물들의 목록과 프로필 링크 제공. 보호소가 작성한 글 목록 프리뷰 제공. 보호소의 공지사항 조회 가능. 공지사항 목록 링크 제공.
