@@ -10,4 +10,6 @@ public interface ArticleService {
 	Article detail(Integer num) throws Exception;
 	List<Article> listByPage(PageInfo pageInfo) throws Exception;
 	void updateViewCount(Integer num) throws Exception;
+	Article modify(Article article) throws Exception;
+	boolean delete(Integer num) throws Exception;
 }

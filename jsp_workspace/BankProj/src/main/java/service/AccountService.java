@@ -11,9 +11,11 @@ public interface AccountService {
 
 	Account withdraw(String id, Integer money) throws Exception;
 
-	Account searchById(String id) throws Exception;
+	Account accountInfo(String id) throws Exception;
 
-	void transfer(String sid, String rid, Integer money) throws Exception;
+	Account transfer(String sid, String rid, Integer money) throws Exception;
 
 	List<Account> allAccountInfo() throws Exception;
+
+	boolean checkAccountDuplicated(String id) throws Exception;
 }

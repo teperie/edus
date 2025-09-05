@@ -19,7 +19,7 @@ public class ArticleDaoImpl implements ArticleDao {
 		ResultSet rset = null;
 		String sql = "insert into article (title,content,writer,filename,imgfilename) values (?,?,?,?,?);";
 		try {
-			pstmt=conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, article.getTitle());
 			pstmt.setString(2, article.getContent());
 			pstmt.setString(3, article.getWriter());
@@ -28,10 +28,10 @@ public class ArticleDaoImpl implements ArticleDao {
 			pstmt.executeUpdate();
 			DBConnection.commit(conn);
 			rset = pstmt.getGeneratedKeys();
-			if(rset!=null && rset.next()) {
+			if (rset != null && rset.next()) {
 				article.setNum(rset.getInt(1));
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			DBConnection.rollback(conn);
 			e.printStackTrace();
 		} finally {
@@ -53,24 +53,30 @@ public class ArticleDaoImpl implements ArticleDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rset = pstmt.executeQuery();
-			if(rset!=null && rset.next()) {
+			if (rset != null && rset.next()) {
 				String title = rset.getString("title");
 				String content = rset.getString("content");
 				String writer = rset.getString("writer");
 				String filename = rset.getString("filename");
 				String imgfilename = rset.getString("imgfilename");
 				Integer viewcnt = rset.getInt("viewcnt");
-				Date createdate = rset.getDate("createdate");
-				article = new Article(num,title,content,writer,filename,imgfilename,viewcnt,createdate);
+
+				article = new Article();
+				article.setTitle(title);
+				article.setContent(content);
+				article.setWriter(writer);
+				article.setFilename(filename);
+				article.setImgfilename(imgfilename);
+				article.setViewcnt(viewcnt);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBConnection.close(rset);
 			DBConnection.close(pstmt);
 			DBConnection.close(conn);
 		}
-		 
+
 		return article;
 	}
 
@@ -82,23 +88,30 @@ public class ArticleDaoImpl implements ArticleDao {
 		ResultSet rset = null;
 		String sql = "select * from article order by num desc limit ?, 10";
 		try {
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, row);
-			rset=pstmt.executeQuery();
-			if(rset!=null) {
-				while(rset.next()) {
-					Integer num=rset.getInt("num");
-					String title=rset.getString("title");
-					String content=rset.getString("content");
-					String writer=rset.getString("writer");
-					String filename=rset.getString("filename");
-					String imgfilename=rset.getString("imgfilename");
-					Integer viewcnt=rset.getInt("viewcnt");
-					Date createdate=rset.getDate("createdate");
-					articleList.add(new Article(num,title,content,writer,filename,imgfilename,viewcnt,createdate));
+			rset = pstmt.executeQuery();
+			if (rset != null) {
+				while (rset.next()) {
+					Integer num = rset.getInt("num");
+					String title = rset.getString("title");
+					String content = rset.getString("content");
+					String writer = rset.getString("writer");
+					String filename = rset.getString("filename");
+					String imgfilename = rset.getString("imgfilename");
+					Integer viewcnt = rset.getInt("viewcnt");
+					Article article = new Article();
+					article.setNum(num);
+					article.setTitle(title);
+					article.setContent(content);
+					article.setWriter(writer);
+					article.setFilename(filename);
+					article.setImgfilename(imgfilename);
+					article.setViewcnt(viewcnt);
+					articleList.add(article);
 				}
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBConnection.close(rset);
@@ -116,12 +129,12 @@ public class ArticleDaoImpl implements ArticleDao {
 		Integer cnt = 0;
 		String sql = "select count(*) from article";
 		try {
-			stmt=conn.createStatement();
-			rset=stmt.executeQuery(sql);
-			if(rset!=null && rset.next()) {
-				cnt=rset.getInt(1);
-			} 
-		} catch(Exception e) {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			if (rset != null && rset.next()) {
+				cnt = rset.getInt(1);
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBConnection.close(rset);
@@ -129,6 +142,72 @@ public class ArticleDaoImpl implements ArticleDao {
 			DBConnection.close(conn);
 		}
 		return cnt;
+	}
+
+	@Override
+	public int update(Article article) throws Exception {
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = "update article set title=?, content=?, writer=?, filename=?, imgfilename=? where num=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, article.getTitle());
+			pstmt.setString(2, article.getContent());
+			pstmt.setString(3, article.getWriter());
+			pstmt.setString(4, article.getFilename());
+			pstmt.setString(5, article.getImgfilename());
+			pstmt.setInt(6, article.getNum());
+			result = pstmt.executeUpdate();
+			DBConnection.commit(conn);
+		} catch (Exception e) {
+			DBConnection.rollback(conn);
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return result;
+	}
+
+	@Override
+	public void updateViewCount(Integer num) {
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "update article set viewcnt = viewcnt + 1 where num = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			DBConnection.commit(conn);
+		} catch (Exception e) {
+			DBConnection.rollback(conn);
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+	}
+
+	@Override
+	public boolean delete(Integer num) throws Exception {
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = "delete from article where num=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			result = pstmt.executeUpdate();
+			DBConnection.commit(conn);
+		} catch (Exception e) {
+			DBConnection.rollback(conn);
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		return result > 0;
 	}
 
 }

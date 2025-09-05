@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Account;
+import service.AccountService;
 import service.AccountServiceImpl;
 
 /**
@@ -32,30 +31,15 @@ public class AllAccountInfo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		RequestDispatcher rd = null;
-		
-		AccountServiceImpl service = new AccountServiceImpl();
-		
-		List<Account> accs = null;
+		RequestDispatcher dispatcher = null;
 		try {
-			accs = service.allAccountInfo();
-			request.setAttribute("accs", accs);
-			rd = request.getRequestDispatcher("allaccountinfo.jsp");
-		} catch (Exception e) {
-			System.err.println(e);
-			request.setAttribute("err", e);
-			rd = request.getRequestDispatcher("error.jsp");
+			AccountService service=new AccountServiceImpl();
+			request.setAttribute("accList", service.allAccountInfo());
+			dispatcher=request.getRequestDispatcher("allaccountinfo.jsp");
+		} catch(Exception e) {
+			request.setAttribute("err", "전체계좌조회오류");
+			dispatcher=request.getRequestDispatcher("error.jsp");
 		}
-		rd.forward(request, response);
+		dispatcher.forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
